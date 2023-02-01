@@ -109,7 +109,19 @@ print(tuple3.favoriteColor)
  is any type followed by a question mark ex: Int?
  
  nil is the valueless state optionals are set to upon
- failing/a proper value is not able to be found.
+ failing/a proper value is not able to be found. Nil
+ cannot be used with non-options variables/constants.
+ 
+ Once verified that the value in an optional is not nil
+ the exclamation mark symbol can be used to unwrap the
+ value. This is called forced unwrapping
+ 
+ Variables created using an if statement are only available
+ in the scope of said if statement
+ 
+ Implicit unwrapping one check to confirm an optional as
+ being a value and not nil *
+ 
  */
 
 // Attempting to parse a string to int may or may not work
@@ -122,6 +134,43 @@ var optionalString: String? = "It is a string!"
 // If no value is given to an optional nil is set to the default
 var optionalDefault: Bool?
 
+// Use comparative operator to check for nil values
+if optionalDefault == nil{
+    print("The value of optionalDefault is nil")
+}
+
+// Forced unwrapping
+let possibleLargeInt: Int64? = Int64.max
+if possibleLargeInt != nil{
+    print("The value in possible large in was \(possibleLargeInt!)") // Forced unwrapping
+}
+
+// Optional Binding set variable if not nil/there is a value
+// Must specify type. Use cast to do so
+let testIng: Int? = 5
+if let confirmedInt = testIng{
+    print("The possible large integer was confirmed as being \(confirmedInt)")
+}
+
+let confirmedPossible = Int(possibleNumber)
+if let confirmedPossible = confirmedPossible{
+    print("Confirmed number was \(confirmedPossible)")
+}
+
+// Also rewrite for simplicity * better practice
+if var confirmedPossible{ // Use let or var and conversion is seamless
+    print("Confirmed number was \(confirmedPossible)")
+}
+
+// Many variables in bindings
+let oneNumber: Int? = 1
+let secondNumber: Int? = 2
+
+if let oneNumber, let secondNumber{
+    let combinedNumber = oneNumber + secondNumber
+}
+
+// Implicit unwrapping *
 
 
 
