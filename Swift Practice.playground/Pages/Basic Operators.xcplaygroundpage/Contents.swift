@@ -1,26 +1,33 @@
-    // Comments
-// inline comments use two forward slashes
-// block comments use forward slashes and asterisks /* */
-
 /*
- Block comments can have other /* Block comments inside of them */
+ Comments:
+ 
+ inline comments use two forward slashes
+ block comments use forward slashes and asterisks /* */
+ 
+ /*
+  Block comments can have other /* Block comments inside of them */
+  */
  */
 
-
-
-    // Constants
-// constants cannot change variables can
-// constants are preferred
-// variables and constants can be named with any symbols including emojis
+/*
+ Constants and Variables:
+ 
+ constants cannot change variables can'
+ constants are preferred
+ variables and constants can be named with any symbols including emojis
+ */
 
 let constant = 6
 
 var variable = 5
 variable += 7
 
-    // Types
-// Type declaration
-// Types can be set using a colon : which represents of the type
+/*
+ Types:
+ 
+ Type declaration
+ Types can be set using a colon : which represents of the type
+ */
 
 let explicitType: Int = 50
 
@@ -120,8 +127,9 @@ print(tuple3.favoriteColor)
  in the scope of said if statement
  
  Implicit unwrapping one check to confirm an optional as
- being a value and not nil *
- 
+ being a value and not nil. Can be thought of being defined
+ such that an attempted access to the value will be
+ automatically force unwrapped it. *
  */
 
 // Attempting to parse a string to int may or may not work
@@ -171,7 +179,8 @@ if let oneNumber, let secondNumber{
 }
 
 // Implicit unwrapping *
-
+let implicitString: String! = "This string will be implicitly unwrapped"
+let implicitStringProof: String = implicitString // No need for exclamation point
 
 
 /*
@@ -205,16 +214,58 @@ typealias littleInt = Int8
 var maxLittleInt = littleInt.max // Set as the max of the named type little int
 
 
-// Randomness
-
-
 // Printing
 // Use print to print out values
 // to include inline values in print use backslash and brackets \()
 let inline = "inline"
 print("We are talking about \(inline) printing right now")
 
+/*
+ Error Handling:
+ 
+ As opposed to optionals when an error occurs they can be
+ caught and dealt with as needed. A function can throws an error
+ if it has the keyword throws the declaration.
+ 
+ Do blocks create a scope where should errors be thrown
+ they they can be attempted to be amended in the catch
+ block/s
+ */
 
+func canThrowAnError() throws {
+    // Throw some error
+}
+
+// Do try catch block
+
+do{
+    try canThrowAnError()
+}catch{
+    print("error has been thrown!")
+}
+
+
+/*
+ Assertions and precautions:
+ 
+ Assertions only run in debug mode and will not execute
+ otherwise.
+ 
+ Precautions run in both debug and in production.'
+ 
+ Use failure on the end of precondition and assertion clause
+ in order to immediately fail: preconditionFailure assertFailure
+ */
+
+let assertAge = 60
+
+assert(age < 50, "Age must be less than 60") // Comment not necessary but recommended
+
+if assertAge < 60{
+    print("Good to go! Age was less than 60")
+} else{
+    preconditionFailure("Age was not less than 60")
+}
 
 
     // Other tricks
@@ -224,5 +275,3 @@ let multipleStatement = "This thing"; print(multipleStatement)
 
 // Numerical values can also have underscores for easier readably
 let oneMillion = 1_000_000
-
-
